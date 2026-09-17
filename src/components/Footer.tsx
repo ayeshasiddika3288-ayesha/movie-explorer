@@ -13,12 +13,7 @@ function Footer() {
         </p>
 
         <div className="flex items-center gap-4">
-          
-            href="https://github.com/ayeshasiddika3288-ayesha"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm hover:text-white transition-colors"
-          >
+          <a href="https://github.com/ayeshasiddika3288-ayesha" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors">
             GitHub
           </a>
         </div>
