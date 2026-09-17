@@ -6,12 +6,13 @@ interface MovieCardProps {
 }
 
 function MovieCard({ show, onSeeDetails }: MovieCardProps) {
-  const posterUrl = show.image?.medium || "https://via.placeholder.com/210x295?text=No+Image";
+  const posterUrl =
+    show.image?.medium || "https://via.placeholder.com/210x295?text=No+Image";
   const year = show.premiered ? show.premiered.split("-")[0] : "N/A";
   const rating = show.rating?.average ?? "N/A";
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-xl transition-shadow">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
       <img
         src={posterUrl}
         alt={show.name}
