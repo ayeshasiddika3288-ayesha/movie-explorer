@@ -4,9 +4,7 @@ function HomePage() {
   return (
     <div>
       {/* Hero Banner */}
-      <section
-        className="relative bg-gradient-to-br from-gray-900 via-blue-950 to-gray-900 text-white overflow-hidden"
-      >
+      <section className="relative bg-gradient-to-br from-gray-900 via-blue-950 to-gray-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center relative z-10">
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6">
             DISCOVER MOVIES
@@ -17,21 +15,19 @@ function HomePage() {
           </p>
           <Link
             to="/movies"
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors shadow-lg"
+            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all shadow-lg hover:shadow-2xl hover:scale-105"
           >
             Explore Now
           </Link>
         </div>
 
-        {/* decorative glow */}
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl" />
         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl" />
       </section>
 
-      {/* Optional: quick info section below hero */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-          <div>
+          <div className="p-6 rounded-xl hover:bg-gray-50 transition-colors">
             <h3 className="text-2xl font-bold text-gray-900 mb-2">
               🔍 Search
             </h3>
@@ -39,7 +35,7 @@ function HomePage() {
               Find any movie or show by title in seconds.
             </p>
           </div>
-          <div>
+          <div className="p-6 rounded-xl hover:bg-gray-50 transition-colors">
             <h3 className="text-2xl font-bold text-gray-900 mb-2">
               ⭐ Ratings
             </h3>
@@ -47,7 +43,7 @@ function HomePage() {
               Check ratings before you hit play.
             </p>
           </div>
-          <div>
+          <div className="p-6 rounded-xl hover:bg-gray-50 transition-colors">
             <h3 className="text-2xl font-bold text-gray-900 mb-2">
               🎬 Details
             </h3>
