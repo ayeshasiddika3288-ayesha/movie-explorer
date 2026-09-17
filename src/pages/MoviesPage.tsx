@@ -11,14 +11,6 @@ function MoviesPage() {
   const [selectedShow, setSelectedShow] = useState<Show | null>(null);
 
   useEffect(() => {
-    setLoading(true);
-    getAllShows()
-      .then((data) => setShows(data))
-      .catch(() => setError("Failed to load movies. Please try again."))
-      .finally(() => setLoading(false));
-  }, []);
-
-  useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(true);
       setError(null);
@@ -41,6 +33,7 @@ function MoviesPage() {
           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
             🔍
           </span>
+
           <input
             type="text"
             value={query}
@@ -54,6 +47,7 @@ function MoviesPage() {
       {loading && (
         <div className="flex flex-col items-center justify-center py-20">
           <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+
           <p className="text-gray-500">Loading movies...</p>
         </div>
       )}
@@ -80,7 +74,10 @@ function MoviesPage() {
         </div>
       )}
 
-      <MovieModal show={selectedShow} onClose={() => setSelectedShow(null)} />
+      <MovieModal
+        show={selectedShow}
+        onClose={() => setSelectedShow(null)}
+      />
     </div>
   );
 }

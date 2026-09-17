@@ -7,7 +7,9 @@ interface MovieCardProps {
 
 function MovieCard({ show, onSeeDetails }: MovieCardProps) {
   const posterUrl =
-    show.image?.medium || "https://via.placeholder.com/210x295?text=No+Image";
+    show.image?.medium ||
+    "https://via.placeholder.com/210x295?text=No+Image";
+
   const year = show.premiered ? show.premiered.split("-")[0] : "N/A";
   const rating = show.rating?.average ?? "N/A";
 
@@ -16,16 +18,23 @@ function MovieCard({ show, onSeeDetails }: MovieCardProps) {
       <img
         src={posterUrl}
         alt={show.name}
+        onError={(e) => {
+          e.currentTarget.src =
+            "https://via.placeholder.com/210x295?text=No+Image";
+        }}
         className="w-full h-72 object-cover"
       />
+
       <div className="p-4 flex flex-col flex-grow">
         <h3 className="font-semibold text-gray-900 text-lg mb-2 line-clamp-1">
           {show.name}
         </h3>
+
         <div className="flex items-center gap-3 text-sm text-gray-600 mb-4">
           <span>⭐ {rating}</span>
           <span>📅 {year}</span>
         </div>
+
         <button
           onClick={() => onSeeDetails(show)}
           className="mt-auto bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 rounded-md transition-colors"
