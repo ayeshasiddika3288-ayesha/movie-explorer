@@ -10,7 +10,6 @@ function MoviesPage() {
   const [query, setQuery] = useState("");
   const [selectedShow, setSelectedShow] = useState<Show | null>(null);
 
-  // Load all shows on first render
   useEffect(() => {
     setLoading(true);
     getAllShows()
@@ -19,28 +18,24 @@ function MoviesPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  // Debounced search whenever query changes
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(true);
       setError(null);
 
-      const fetchData = query.trim()
-        ? searchShows(query)
-        : getAllShows();
+      const fetchData = query.trim() ? searchShows(query) : getAllShows();
 
       fetchData
         .then((data) => setShows(data))
         .catch(() => setError("Failed to load movies. Please try again."))
         .finally(() => setLoading(false));
-    }, 500); // wait 500ms after user stops typing
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [query]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      {/* Search Bar */}
       <div className="mb-8">
         <div className="relative max-w-xl mx-auto">
           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
@@ -51,17 +46,17 @@ function MoviesPage() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search for a movie..."
-            className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-11 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm focus:shadow-md transition-shadow"
           />
         </div>
       </div>
 
       {loading && (
-  <div className="flex flex-col items-center justify-center py-20">
-    <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-4"></div>
-    <p className="text-gray-500">Loading movies...</p>
-  </div>
-)}
+        <div className="flex flex-col items-center justify-center py-20">
+          <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+          <p className="text-gray-500">Loading movies...</p>
+        </div>
+      )}
 
       {!loading && error && (
         <p className="text-center text-red-500 py-10">{error}</p>
@@ -69,7 +64,7 @@ function MoviesPage() {
 
       {!loading && !error && shows.length === 0 && (
         <p className="text-center text-gray-500 py-10">
-          No movies found. Try a different search.
+          😕 No movies found. Try a different search.
         </p>
       )}
 
@@ -85,7 +80,6 @@ function MoviesPage() {
         </div>
       )}
 
-      {/* Modal */}
       <MovieModal show={selectedShow} onClose={() => setSelectedShow(null)} />
     </div>
   );
